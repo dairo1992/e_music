@@ -4,14 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MusicPage extends StatelessWidget {
-  final audioPlayer = AssetsAudioPlayer();
+  // final audioPlayer = AssetsAudioPlayer();
   final playingService = PlayingService();
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    audioPlayer.open(Audio('assets/music/Invicto.mp3'),
-        showNotification: true, autoStart: false);
+    playingService.loadTrack();
+    // audioPlayer.open(Audio('assets/music/Invicto.mp3'),
+    //     showNotification: true, autoStart: false);
     // audioPlayer.aut
     return Container(
       decoration: const BoxDecoration(
@@ -39,7 +40,8 @@ class MusicPage extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 45, horizontal: 25),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 45, horizontal: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -89,7 +91,8 @@ class MusicPage extends StatelessWidget {
                                   height: 10,
                                 ),
                                 Text(
-                                  "La Jumpa",
+                                  playingService
+                                      .audioPlayer.getCurrentAudioTitle,
                                   style: TextStyle(
                                     color: Colors.white.withOpacity(0.8),
                                     fontSize: 18,
@@ -162,10 +165,11 @@ class MusicPage extends StatelessWidget {
                                     padding: EdgeInsets.all(3),
                                     onPressed: () async {
                                       try {
-                                        audioPlayer.playOrPause();
+                                        playingService.audioPlayer
+                                            .playOrPause();
                                         playingService.isPlaying =
-                                            audioPlayer.isPlaying.value;
-                                        print('Dairo-> ${snapshot.data}');
+                                            playingService
+                                                .audioPlayer.isPlaying.value;
                                       } catch (e) {
                                         print("Error al cargar music \n $e");
                                       }
@@ -177,7 +181,7 @@ class MusicPage extends StatelessWidget {
                                           ? Icons.play_arrow_rounded
                                           : Icons.pause,
                                       color: Color(0xFF303151),
-                                      size: 45,
+                                      size: 40,
                                     ));
                               },
                             ),
