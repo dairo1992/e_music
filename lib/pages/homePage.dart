@@ -1,9 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:e_music/providers/playing_provider.dart';
 import 'package:e_music/widgets/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final playingService = Provider.of<PlayingService>(context);
+    TextEditingController searchController = TextEditingController();
+    // searchController.text = 'arcangel';
     final size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 6,
@@ -80,20 +85,32 @@ class HomePage extends StatelessWidget {
                             height: 50,
                             width: size.width * 0.6,
                             child: TextFormField(
+                                controller: searchController,
+                                style: const TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
-                              hintText: "Buscar",
-                              hintStyle: TextStyle(
-                                  color: Colors.white.withOpacity(0.5)),
-                              border: InputBorder.none,
-                            )),
+                                  hintText: "Buscar",
+                                  hintStyle: TextStyle(
+                                      color: Colors.white.withOpacity(0.5)),
+                                  border: InputBorder.none,
+                                )),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Icon(
-                              Icons.search_rounded,
-                              color: Colors.white.withOpacity(0.5),
-                              size: 30,
-                            ),
+                            child: IconButton(
+                                splashRadius: 0.5,
+                                onPressed: () async {
+                                  FocusScope.of(context).unfocus();
+                                  if (searchController.text.isNotEmpty) {
+                                    playingService
+                                        .getTracks(searchController.text);
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.search_rounded,
+                                  color: Colors.red.withOpacity(0.5),
+                                  // color: Colors.white.withOpacity(0.5),
+                                  size: 30,
+                                )),
                           )
                         ],
                       ),
@@ -129,17 +146,7 @@ class HomePage extends StatelessWidget {
                   Flexible(
                       child: TabBarView(
                     children: [
-                      ListView.builder(
-                        itemCount: 120,
-                        itemBuilder: (context, i) {
-                          return MusicList(
-                            artist: 'Arcangel Feat Bad Bunny',
-                            duration: '04:35',
-                            index: i,
-                            name: 'La Jumpa',
-                          );
-                        },
-                      ),
+                      const MusicList(),
                       ListView.builder(
                         itemCount: 120,
                         itemBuilder: (context, i) {

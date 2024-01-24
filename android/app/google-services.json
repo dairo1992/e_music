@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "862109981794",
+    "project_id": "petpal-1dce6",
+    "storage_bucket": "petpal-1dce6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862109981794:android:2d920225b9e6f00f1f053b",
+        "android_client_info": {
+          "package_name": "com.example.e_music"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862109981794-q366uu5gs8340d1r9nqqh95ihijak59v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM8EynbpRm2R6LJuWspXgHVHAI88MNqrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862109981794-q366uu5gs8340d1r9nqqh95ihijak59v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

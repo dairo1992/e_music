@@ -126,21 +126,21 @@ class PlayListPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15),
-              SizedBox(
-                width: size.width,
-                height: size.height * 0.4,
-                child: ListView.builder(
-                  itemCount: 120,
-                  itemBuilder: (context, i) {
-                    return MusicList(
-                      artist: 'Arcangel Feat Bad Bunny',
-                      duration: '04:35',
-                      index: i,
-                      name: 'La Jumpa',
-                    );
-                  },
-                ),
-              )
+              // SizedBox(
+              //   width: size.width,
+              //   height: size.height * 0.4,
+              //   child: ListView.builder(
+              //     itemCount: 120,
+              //     itemBuilder: (context, i) {
+              //       return MusicList(
+              //         artist: 'Arcangel Feat Bad Bunny',
+              //         duration: '04:35',
+              //         index: i,
+              //         name: 'La Jumpa',
+              //       );
+              //     },
+              //   ),
+              // )
             ],
           ),
         )),
